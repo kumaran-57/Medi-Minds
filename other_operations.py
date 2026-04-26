@@ -18,6 +18,7 @@ checkpoint_path = "static/gan_generator.pth"
 os.makedirs(output_dir, exist_ok=True)
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+torch.set_num_threads(1)  # Limit threads to reduce memory usage on small VMs
 
 class Generator(nn.Module):
     def __init__(self):
@@ -61,12 +62,15 @@ model_name = "dima806/chest_xray_pneumonia_detection"
 processor = None
 model = None
 
+import gc
+
 def load_model():
     global processor, model
     if processor is None or model is None:
         print("Loading ViT model from Hugging Face...")
         processor = ViTImageProcessor.from_pretrained(model_name)
-        model = AutoModelForImageClassification.from_pretrained(model_name)
+        model = AutoModelForImageClassification.from_pretrained(model_name, low_cpu_mem_usage=True)
+        gc.collect()
         print("ViT model loaded successfully!")
 
 def model_predict(path):
@@ -85,5 +89,6 @@ def model_predict(path):
         # Get class label
     predicted_label  = model.config.id2label[predicted_class_idx]
     confidence = torch.nn.functional.softmax(logits, dim=-1)[0][predicted_class_idx].item() * 100
+    gc.collect()
 
     return predicted_label,confidence
