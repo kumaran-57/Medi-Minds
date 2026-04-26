@@ -69,7 +69,11 @@ def load_model():
     if processor is None or model is None:
         print("Loading ViT model from Hugging Face...")
         processor = ViTImageProcessor.from_pretrained(model_name)
-        model = AutoModelForImageClassification.from_pretrained(model_name, low_cpu_mem_usage=True)
+        model = AutoModelForImageClassification.from_pretrained(
+            model_name, 
+            low_cpu_mem_usage=True, 
+            torch_dtype=torch.bfloat16
+        )
         gc.collect()
         print("ViT model loaded successfully!")
 
@@ -79,6 +83,7 @@ def model_predict(path):
 
         # Apply the processor (resizing, rescaling, normalization, etc.)
     inputs = processor(images=image, return_tensors="pt")
+    inputs["pixel_values"] = inputs["pixel_values"].to(torch.bfloat16)
 
         # Run model
     with torch.no_grad():

@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request
 import os
+os.environ['MALLOC_ARENA_MAX'] = '2'
 from flask import Flask, request, render_template, url_for
 from werkzeug.utils import secure_filename
 import os
