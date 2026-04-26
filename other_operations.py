@@ -67,12 +67,13 @@ import gc
 def load_model():
     global processor, model
     if processor is None or model is None:
-        print("Loading ViT model from Hugging Face...")
-        processor = ViTImageProcessor.from_pretrained(model_name)
+        print("Loading ViT model from local cache...")
+        processor = ViTImageProcessor.from_pretrained(model_name, local_files_only=True)
         model = AutoModelForImageClassification.from_pretrained(
             model_name, 
             low_cpu_mem_usage=True, 
-            dtype=torch.bfloat16
+            dtype=torch.bfloat16,
+            local_files_only=True
         )
         gc.collect()
         print("ViT model loaded successfully!")
