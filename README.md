@@ -2,6 +2,7 @@
   <img src="static/images/logo.png" alt="Project Logo" width="300"/>
   <h2>Medical Imaging & Condition Prediction</h2>
   <p>An AI-powered web application for Chest X-ray generation and condition classification using deep learning architectures (PyTorch & Transformers).</p>
+  <p><strong>🌐 Live Application:</strong> <a href="https://medi-minds.onrender.com">https://medi-minds.onrender.com</a></p>
 </div>
 
 ---
