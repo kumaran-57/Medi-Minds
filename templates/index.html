@@ -1,0 +1,240 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+		
+		<!-- Slider Area -->
+		<section class="slider">
+			<div class="hero-slider">
+				<!-- Start Single Slider -->
+				<div class="single-slider" style="background-image:url('{{ url_for('static', filename='images/slider1.png') }}')">
+					<div class="container">
+						<div class="row">
+							<div class="col-lg-7">
+								<div class="text">
+									<h1>This Project improve the <br><span style="color:rgb(34, 120, 196)">Medical</span> Predictions That You Can <span style="color:rgb(34, 120, 196)">Trust!</span></h1>
+									<p>🚀 Powered by ACGAN and deep convolutional architectures for robust image generation and classification. </p>	
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- End Single Slider -->
+				<!-- Start Single Slider -->
+				<div class="single-slider" style="background-image:url('{{ url_for('static', filename='images/slider2.png') }}')">
+					<div class="container">
+						<div class="row">
+							<div class="col-lg-7">
+								<div class="text">
+									<h1>This Project aims <span style="color:rgb(34, 120, 196)">Generating Images </span style="color:rgb(34, 120, 196)"> using ACGAN That You Can <span style="color:rgb(34, 120, 196)">Trust!</span></h1>
+									<p> Using <strong>ACGAN</strong>, we generate synthetic Chest X-rays conditioned on class labels:
+									  </p>
+									  <ul>
+										<li>🩺 <strong style="color: rgb(2, 95, 156);">COVID-19 Positive</strong></li>
+										<li>🌡️<strong style="color: rgb(2, 95, 156);">Pneumonia</strong></li>Medical News
+										<li>🫁 <strong style="color: rgb(2, 95, 156);">Normal</strong></li>
+									  </ul>
+									<p>🚀 Powered by ACGAN and deep convolutional architectures for robust image generation and classification. </p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- Start End Slider -->
+				<!-- Start Single Slider -->
+				 <div class="single-slider" style="background-image:url('{{ url_for('static', filename='images/slider3.png') }}')">
+				<div class="container">
+						<div class="row">
+							<div class="col-lg-7">
+								<div class="text">
+									<h1>We Perform <span style="color:rgb(34, 120, 196)">Medical </span style="color:rgb(34, 120, 196)"> Predictions That You Can <span style="color:rgb(34, 120, 196)">Trust!</span></h1>
+									<p class="lead">Upload a Chest X-ray and let our trained model predict the condition:</p>
+									<br>
+									<ul>
+										<li>🦠 <strong style="color: rgb(2, 95, 156);">COVID-19</strong></li>
+										<li>🌬️ <strong style="color: rgb(2, 95, 156);">Pneumonia</strong></li>
+										<li>🫁 <strong style="color: rgb(2, 95, 156);">Normal</strong></li>
+									  </ul>
+									  <p>
+										Our model uses a <strong>CNN-based discriminator</strong> integrated into the <strong>ACGAN architecture</strong>
+										to ensure both high classification accuracy and realism in data.
+									  </p>
+									<p>🚀 Powered by ACGAN and deep convolutional architectures for robust image generation and classification. </p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- End Single Slider -->
+			</div>
+		</section>
+		<!--/ End Slider Area -->
+<br><br>
+		<!-- Start Feautes -->
+		<section class="Feautes section">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="section-title">
+							<h2>🧠 Focused on AI & Healthcare:</h2>
+							<ul>
+								<li><strong>"Empowering Diagnostics with GAN-Generated Medical Intelligence</strong></li><br>
+								<li><strong>"Advancing Medical Imaging Through Synthetic Data and Deep Learning"</strong></li><br>
+								<li><strong>"Accurate Predictions, Smarter Healthcare – Powered by GANs"</strong></li><br>
+								<li><strong>AI-Driven Insights for Faster and Smarter Chest X-ray Analysis"</strong>"</li><br>
+								<li><strong>"Revolutionizing Radiology with Synthetic Intelligence"</strong></li><br>
+							  </ul>
+							<img src="{{ url_for('static', filename='images/section-img.png') }}" alt="#">
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-4 col-12">
+						<!-- Start Single features -->
+						<div class="single-features">
+							<div class="signle-icon">
+								<i class="icofont icofont-table"></i>
+							</div>
+							<h3>Generator</h3>
+						</div>
+						<!-- End Single features -->
+					</div>
+					<div class="col-lg-4 col-12">
+						<!-- Start Single features -->
+						<div class="single-features">
+							<div class="signle-icon">
+								<i class="icofont-paper-plane"></i>
+							</div>
+							<h3>Discriminator</h3>
+						</div>
+						<!-- End Single features -->
+					</div>
+					<div class="col-lg-4 col-12">
+						<!-- Start Single features -->
+						<div class="single-features last">
+							<div class="signle-icon">
+								<i class="icofont icofont-stethoscope"></i>
+							</div>
+							<h3>DenseNet-Integrated Model</h3>
+						</div>
+						<!-- End Single features -->
+					</div>
+				</div>
+			</div>
+		</section>
+		<!--/ End Feautes -->
+		
+		<!-- Start Fun-facts -->
+		<div id="fun-facts" class="fun-facts section overlay">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-3 col-md-6 col-12">
+						<!-- Start Single Fun -->
+						<div class="single-fun">
+							<i class="icofont icofont-user-alt-3"></i>
+							<div class="content">
+								<span class="counter">2758432</span>
+								<p>Original Patient Data</p>
+							</div>
+						</div>
+						<!-- End Single Fun -->
+					</div>
+					<div class="col-lg-3 col-md-6 col-12">
+						<!-- Start Single Fun -->
+						<div class="single-fun">
+							<i class="icofont-vimeo"></i>
+							<div class="content">
+								<span class="counter">264</span>
+								<p>variations</p>
+							</div>
+						</div>
+						<!-- End Single Fun -->
+					</div>
+					<div class="col-lg-3 col-md-6 col-12">
+						<!-- Start Single Fun -->
+						<div class="single-fun">
+							<i class="icofont-prescription"></i>
+							<div class="content">
+								<span class="counter">98.6</span>
+								<p>Accuracy</p>
+							</div>
+						</div>
+						<!-- End Single Fun -->
+					</div>
+					<div class="col-lg-3 col-md-6 col-12">
+						<!-- Start Single Fun -->
+						<div class="single-fun">
+							<i class="icofont icofont-table"></i>
+							<div class="content">
+								<span class="counter">20</span><p>lakhs</p>
+								<p>Generated Images</p>
+							</div>
+						</div>
+						<!-- End Single Fun -->
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--/ End Fun-facts -->
+		
+
+		
+		<!-- Start portfolio -->
+		<section class="portfolio section" >
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="section-title">
+							<h2>This Project Generates High Accurate Medical Imaging Data</h2>
+							<img src="{{ url_for('static', filename='images/section-img.png') }}" alt="#">	
+							<br><br>
+							<h4>SOme of the Sample Generated Images</h4>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-lg-12 col-12">
+						<div class="owl-carousel portfolio-slider">
+							<div class="single-pf">
+								<img src="{{ url_for('static', filename='images/pf1.png') }}" alt="#">
+								<a href="{{ url_for('results') }}" class="btn">Pneumonia</a>
+							</div>
+							<div class="single-pf">
+								<img src="{{ url_for('static', filename='images/pf2.png') }}" alt="#">
+								<a href="{{ url_for('results') }}" class="btn">COVID-19</a>
+							</div>
+							<div class="single-pf">
+								<img src="{{ url_for('static', filename='images/pf3.png') }}" alt="#">
+								<a href="{{ url_for('results') }}" class="btn">COVID-19</a>
+							</div>
+							<div class="single-pf">
+								<img src="{{ url_for('static', filename='images/pf4.png') }}" alt="#">
+								<a href="{{ url_for('results') }}" class="btn">Pneumonia</a>
+							</div>
+							<div class="single-pf">
+								<img src="{{ url_for('static', filename='images/pf1.png') }}" alt="#">
+								<a href="{{ url_for('results') }}" class="btn">Normal</a>
+							</div>
+							<div class="single-pf">
+								<img src="{{ url_for('static', filename='images/pf2.png') }}" alt="#">
+								<a href="{{ url_for('results') }}" class="btn">COVID-19</a>
+							</div>
+							<div class="single-pf">
+								<img src="{{ url_for('static', filename='images/pf3.png') }}" alt="#">
+								<a href="{{ url_for('results') }}" class="btn">Normal</a>
+							</div>
+							<div class="single-pf">
+								<img src="{{ url_for('static', filename='images/pf4.png') }}" alt="#">
+								<a href="{{ url_for('results') }}" class="btn">Pneumonia</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!--/ End portfolio -->
+		
+
+
+{% endblock %}

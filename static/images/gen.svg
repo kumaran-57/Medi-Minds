@@ -1,0 +1,148 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1100">
+  <!-- Styles -->
+  <style>
+    .dense { fill: #b33024; }
+    .relu { fill: #a4d08b; }
+    .reshape { fill: #b8892e; }
+    .embedding { fill: #b2b2b2; }
+    .conv { fill: #e6b795; }
+    .batchnorm { fill: #b8c6e2; }
+    .tanh { fill: #3f51b5; }
+    .label { fill: #e6a16f; }
+    .arrow { stroke: #888; stroke-width: 2; fill: none; }
+    .circle { fill: #fff; stroke: #888; stroke-width: 2; }
+    .box { stroke: none; }
+    .parambox { fill: #fff; stroke: #000; stroke-width: 2; }
+    .connect { stroke: #888; stroke-width: 2; fill: none; }
+    .text { font-family: Arial, sans-serif; font-size: 20px; fill: #fff; text-anchor: middle; dominant-baseline: middle; }
+    .textdim { font-family: Arial, sans-serif; font-size: 18px; fill: #000; text-anchor: start; dominant-baseline: middle; }
+    .paramtext { font-family: Arial, sans-serif; font-size: 20px; fill: #000; text-anchor: start; dominant-baseline: middle; }
+    .paramtitle { font-family: Arial, sans-serif; font-size: 24px; font-weight: bold; fill: #000; text-anchor: start; dominant-baseline: middle; }
+  </style>
+
+  <!-- Left Branch -->
+  <!-- Noise Vector -->
+  <rect x="150" y="30" width="300" height="50" class="embedding" />
+  <text x="300" y="55" class="text">Noise Vector</text>
+  <text x="100" y="55" class="textdim">100</text>
+  
+  <!-- Dense 7*7*1024 -->
+  <rect x="150" y="120" width="300" height="50" class="dense" />
+  <text x="300" y="145" class="text">Dense 7 * 7 * 1024</text>
+  
+  <!-- ReLU -->
+  <rect x="150" y="180" width="300" height="50" class="relu" />
+  <text x="300" y="205" class="text">ReLU</text>
+  
+  <!-- Reshape -->
+  <rect x="150" y="240" width="300" height="50" class="reshape" />
+  <text x="300" y="265" class="text">Reshape</text>
+  <text x="80" y="240" class="textdim">7 x 7 x 1024</text>
+  
+  <!-- Arrow from Noise to Dense -->
+  <path d="M300 80 L300 120" class="arrow" marker-end="url(#arrowhead)" />
+  
+  <!-- Arrow from Dense to ReLU -->
+  <path d="M300 170 L300 180" class="arrow" marker-end="url(#arrowhead)" />
+  
+  <!-- Arrow from ReLU to Reshape -->
+  <path d="M300 230 L300 240" class="arrow" marker-end="url(#arrowhead)" />
+  
+  <!-- Right Branch -->
+  <!-- Class Label -->
+  <rect x="705" y="30" width="125" height="50" class="label" />
+  <text x="767.5" y="55" class="text">Class Label</text>
+  <text x="860" y="55" class="textdim">1</text>
+  
+  <!-- Embedding -->
+  <rect x="630" y="120" width="250" height="50" class="embedding" />
+  <text x="755" y="145" class="text">Embedding</text>
+  <text x="900" y="145" class="textdim">100</text>
+  
+  <!-- Dense 7*7 -->
+  <rect x="630" y="210" width="250" height="50" class="dense" />
+  <text x="755" y="235" class="text">Dense 7 * 7</text>
+  <text x="900" y="235" class="textdim">7 x 7 x 1</text>
+  
+  <!-- Arrow from Label to Embedding -->
+  <path d="M767.5 80 L767.5 120" class="arrow" marker-end="url(#arrowhead)" />
+  
+  <!-- Arrow from Embedding to Dense -->
+  <path d="M767.5 170 L767.5 210" class="arrow" marker-end="url(#arrowhead)" />
+  
+  <!-- Merge Circle -->
+  <circle cx="500" cy="340" r="40" class="circle" />
+  <text x="500" y="340" font-family="Arial, sans-serif" font-size="30px" fill="#000">C</text>
+  
+  <!-- Arrows to Merge Circle -->
+  <path d="M300 290 L300 340 L460 340" class="connect" marker-end="url(#arrowhead)" />
+  <path d="M767.5 260 L767.5 340 L540 340" class="connect" marker-end="url(#arrowhead)" />
+  <text x="860" y="340" class="textdim">7 x 7 x 1025</text>
+
+  <!-- Bottom Branch after merge -->
+  <rect x="375" y="410" width="250" height="50" class="conv" />
+  <rect x="375" y="460" width="250" height="50" class="batchnorm" />
+  <rect x="375" y="510" width="250" height="50" class="relu" />
+  <text x="500" y="435" class="text">5x5 Conv2DTranspose</text>
+  <text x="500" y="485" class="text">Batch Normalization</text>
+  <text x="500" y="535" class="text">ReLU</text>
+  <text x="650" y="450" class="textdim">14 x 14 x512</text>
+  
+  <!-- Arrow from Circle to Conv -->
+  <path d="M500 380 L500 410" class="arrow" marker-end="url(#arrowhead)" />
+  
+  <!-- Conv2DTranspose 2 -->
+  <rect x="300" y="585" width="400" height="50" class="conv" />
+  <rect x="300" y="635" width="400" height="50" class="batchnorm" />
+  <rect x="300" y="685" width="400" height="50" class="relu" />
+  <text x="500" y="610" class="text">5x5 Conv2DTranspose</text>
+  <text x="500" y="660" class="text">Batch Normalization</text>
+  <text x="500" y="710" class="text">ReLU</text>
+  <text x="730" y="635" class="textdim">28 x 28 x 256</text>
+  
+  <!-- Arrow from ReLU to Conv2 -->
+  <path d="M500 560 L500 585" class="arrow" marker-end="url(#arrowhead)" />
+  
+  <!-- Conv2DTranspose 3 -->
+  <rect x="250" y="740" width="500" height="50" class="conv" />
+  <rect x="250" y="790" width="500" height="50" class="batchnorm" />
+  <rect x="250" y="840" width="500" height="50" class="relu" />
+  <text x="500" y="765" class="text">5x5 Conv2DTranspose</text>
+  <text x="500" y="815" class="text">Batch Normalization</text>
+  <text x="500" y="865" class="text">ReLU</text>
+  <text x="780" y="790" class="textdim">56 x 56 x 128</text>
+  
+  <!-- Arrow from ReLU2 to Conv3 -->
+  <path d="M500 735 L500 740" class="arrow" marker-end="url(#arrowhead)" />
+  
+  <!-- Final Conv2DTranspose -->
+  <rect x="200" y="900" width="600" height="50" class="conv" />
+  <rect x="200" y="950" width="600" height="50" class="tanh" />
+  <text x="500" y="925" class="text">5x5 Conv2DTranspose</text>
+  <text x="500" y="975" class="text">Tanh Activation</text>
+  <text x="830" y="925" class="textdim">112 x 112 x 3</text>
+  
+  <!-- Arrow from ReLU3 to Final Conv -->
+  <path d="M500 890 L500 900" class="arrow" marker-end="url(#arrowhead)" />
+  
+  <!-- Output fake image -->
+  <image x="485" y="1020" width="70" height="70" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNk+A8AAQUBAScY42YAAAAASUVORK5CYII=" preserveAspectRatio="xMidYMid meet"/>
+  <text x="300" y="1045" class="paramtext" style="text-anchor: end;">Fake image</text>
+  <text x="300" y="1075" class="paramtext" style="text-anchor: end;">112 x 112 x 3</text>
+  
+  <!-- Arrow from Tanh to Output -->
+  <path d="M500 1000 L500 1030" class="arrow" marker-end="url(#arrowhead)" />
+  
+  <!-- Parameters box -->
+  <rect x="680" y="995" width="300" height="100" class="parambox" />
+  <text x="700" y="1025" class="paramtitle">Params: 22,303,108</text>
+  <text x="700" y="1055" class="paramtitle">Trainable: 22,301,316</text>
+  <text x="700" y="1085" class="paramtitle">Non-trainable: 1,792</text>
+  
+  <!-- Arrow marker definition -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#888" />
+    </marker>
+  </defs>
+</svg>

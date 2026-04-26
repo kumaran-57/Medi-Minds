@@ -1,0 +1,145 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1150">
+  <!-- Styles -->
+  <style>
+    .input { fill: #b2b2b2; }
+    .conv { fill: #e6b795; }
+    .batchnorm { fill: #b8c6e2; }
+    .leakyrelu { fill: #a4d08b; }
+    .dropout { fill: #b8892e; }
+    .dense-red { fill: #b33024; }
+    .sigmoid { fill: #4169e1; }
+    .softmax { fill: #5b7bb4; }
+    .flatten { fill: #777777; }
+    .output { fill: #b2b2b2; }
+    .arrow { stroke: #888; stroke-width: 2; fill: none; }
+    .box { stroke: none; }
+    .parambox { fill: #fff; stroke: #000; stroke-width: 2; }
+    .text { font-family: Arial, sans-serif; font-size: 20px; fill: #fff; text-anchor: middle; dominant-baseline: middle; }
+    .textdim { font-family: Arial, sans-serif; font-size: 18px; fill: #000; text-anchor: start; dominant-baseline: middle; }
+    .textlabel { font-family: Arial, sans-serif; font-size: 24px; fill: #000; text-anchor: middle; dominant-baseline: middle; }
+    .paramtext { font-family: Arial, sans-serif; font-size: 20px; fill: #000; text-anchor: start; dominant-baseline: middle; }
+    .paramtitle { font-family: Arial, sans-serif; font-size: 24px; font-weight: bold; fill: #000; text-anchor: start; dominant-baseline: middle; }
+    .outputtext { font-family: Arial, sans-serif; font-size: 22px; fill: #fff; text-anchor: middle; dominant-baseline: middle; }
+  </style>
+
+  <!-- Parameters box -->
+  <rect x="10" y="40" width="320" height="100" class="parambox" />
+  <text x="30" y="70" class="paramtitle">Params: 1,672,900</text>
+  <text x="30" y="100" class="paramtitle">Trainable: 1,670,916</text>
+  <text x="30" y="130" class="paramtitle">Non-trainable: 1,984</text>
+  
+  <!-- X-ray Image at top -->
+  <image x="485" y="40" width="90" height="90" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNk+A8AAQUBAScY42YAAAAASUVORK5CYII=" preserveAspectRatio="xMidYMid meet"/>
+  <text x="600" y="70" class="textlabel">Real / Fake Image</text>
+  <text x="600" y="100" class="textlabel">112 x 112 x 3</text>
+  
+  <!-- Arrow from Image to Input -->
+  <path d="M500 130 L500 170" class="arrow" marker-end="url(#arrowhead)" />
+  
+  <!-- Input Layer -->
+  <rect x="300" y="170" width="400" height="40" class="input" />
+  <text x="500" y="190" class="text">Input Layer</text>
+  <text x="720" y="190" class="textdim">112 x 112 x 3</text>
+  
+  <!-- First Conv Block -->
+  <rect x="250" y="220" width="500" height="40" class="conv" />
+  <rect x="250" y="260" width="500" height="40" class="batchnorm" />
+  <rect x="250" y="300" width="500" height="40" class="leakyrelu" />
+  <rect x="250" y="340" width="500" height="40" class="dropout" />
+  <text x="500" y="240" class="text">3x3 Conv2D (stride 2)</text>
+  <text x="500" y="280" class="text">Batch Normalization</text>
+  <text x="500" y="320" class="text">LeakyReLU</text>
+  <text x="500" y="360" class="text">Dropout</text>
+  <text x="780" y="300" class="textdim">56 x 56 x 64</text>
+  
+  <!-- Arrow from Input to First Conv -->
+  <path d="M500 210 L500 220" class="arrow" marker-end="url(#arrowhead)" />
+  
+  <!-- Second Conv Block -->
+  <rect x="300" y="390" width="400" height="40" class="conv" />
+  <rect x="300" y="430" width="400" height="40" class="batchnorm" />
+  <rect x="300" y="470" width="400" height="40" class="leakyrelu" />
+  <rect x="300" y="510" width="400" height="40" class="dropout" />
+  <text x="500" y="410" class="text">3x3 Conv2D (stride 2)</text>
+  <text x="500" y="450" class="text">Batch Normalization</text>
+  <text x="500" y="490" class="text">LeakyReLU</text>
+  <text x="500" y="530" class="text">Dropout</text>
+  <text x="740" y="450" class="textdim">28 x 28 x 128</text>
+  
+  <!-- Arrow from First Block to Second Block -->
+  <path d="M500 380 L500 390" class="arrow" marker-end="url(#arrowhead)" />
+  
+  <!-- Third Conv Block -->
+  <rect x="320" y="560" width="360" height="40" class="conv" />
+  <rect x="320" y="600" width="360" height="40" class="batchnorm" />
+  <rect x="320" y="640" width="360" height="40" class="leakyrelu" />
+  <rect x="320" y="680" width="360" height="40" class="dropout" />
+  <text x="500" y="580" class="text">3x3 Conv2D (stride 2)</text>
+  <text x="500" y="620" class="text">Batch Normalization</text>
+  <text x="500" y="660" class="text">LeakyReLU</text>
+  <text x="500" y="700" class="text">Dropout</text>
+  <text x="740" y="620" class="textdim">14 x 14 x 256</text>
+  
+  <!-- Arrow from Second Block to Third Block -->
+  <path d="M500 550 L500 560" class="arrow" marker-end="url(#arrowhead)" />
+  
+  <!-- Fourth Conv Block -->
+  <rect x="350" y="730" width="300" height="40" class="conv" />
+  <rect x="350" y="770" width="300" height="40" class="batchnorm" />
+  <rect x="350" y="810" width="300" height="40" class="leakyrelu" />
+  <rect x="350" y="850" width="300" height="40" class="dropout" />
+  <text x="500" y="750" class="text">3x3 Conv2D (stride 2)</text>
+  <text x="500" y="790" class="text">Batch Normalization</text>
+  <text x="500" y="830" class="text">LeakyReLU</text>
+  <text x="500" y="870" class="text">Dropout</text>
+  <text x="680" y="790" class="textdim">7 x 7 x 512</text>
+  
+  <!-- Arrow from Third Block to Fourth Block -->
+  <path d="M500 720 L500 730" class="arrow" marker-end="url(#arrowhead)" />
+  
+  <!-- Flatten Layer -->
+  <rect x="325" y="910" width="350" height="40" class="flatten" />
+  <text x="500" y="930" class="text">Flatten</text>
+  <text x="600" y="870" class="textdim">25088</text>
+  
+  <!-- Arrow from Fourth Block to Flatten -->
+  <path d="M500 890 L500 910" class="arrow" marker-end="url(#arrowhead)" />
+  
+  <!-- Source Branch -->
+  <text x="140" y="910" class="textlabel">Source</text>
+  <rect x="75" y="970" width="325" height="40" class="dense-red" />
+  <rect x="75" y="1010" width="325" height="40" class="sigmoid" />
+  <text x="240" y="990" class="text">Dense 1</text>
+  <text x="240" y="1030" class="text">Sigmoid Activation</text>
+  
+  <!-- Auxiliary Branch -->
+  <text x="860" y="910" class="textlabel">Auxiliary</text>
+  <rect x="600" y="970" width="325" height="40" class="dense-red" />
+  <rect x="600" y="1010" width="325" height="40" class="softmax" />
+  <text x="760" y="990" class="text">Dense 3</text>
+  <text x="760" y="1030" class="text">Softmax Activation</text>
+  
+  <!-- Arrows from Flatten to branches -->
+  <path d="M500 950 L240 970" class="arrow" marker-end="url(#arrowhead)" />
+  <path d="M500 950 L760 970" class="arrow" marker-end="url(#arrowhead)" />
+  
+  <!-- Output Boxes -->
+  <rect x="160" y="1070" width="240" height="40" class="output" />
+  <text x="280" y="1090" class="outputtext">FAKE 0 / REAL 1</text>
+  
+  <rect x="600" y="1070" width="325" height="100" class="output" />
+  <text x="760" y="1090" class="outputtext">COVID-19 0</text>
+  <text x="760" y="1120" class="outputtext">NORMAL 1</text>
+  <text x="760" y="1150" class="outputtext">PNEUMONIA 2</text>
+  
+  <!-- Arrows to Output -->
+  <path d="M240 1050 L240 1070" class="arrow" marker-end="url(#arrowhead)" />
+  <path d="M760 1050 L760 1070" class="arrow" marker-end="url(#arrowhead)" />
+  
+  <!-- Arrow marker definition -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#888" />
+    </marker>
+  </defs>
+</svg>

@@ -1,0 +1,119 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+
+<!-- Breadcrumbs -->
+<div class="breadcrumbs overlay">
+  <div class="container">
+    <div class="bread-inner">
+      <div class="row">
+        <div class="col-12">
+          <h2>Predict Lung Condition</h2>
+          <ul class="bread-list">
+            <li><a href="{{ url_for('index') }}">Home</a></li>
+            <li><i class="icofont-simple-right"></i></li>
+            <li class="active">Prediction</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Prediction Section -->
+<section class="pf-details section">
+  <div class="container" style="padding-left: 300px; padding-right: 200px;">
+    <div class="row" style="text-align: center;">
+      <div class="col-12">
+        <div class="inner-content">
+          <div class="body-text">
+            <h3>Upload Chest X-ray for Prediction</h3>
+
+            <!-- Upload Form -->
+            <form action="{{ url_for('prediction') }}" method="POST" enctype="multipart/form-data">
+              <div class="form-group">
+                <label for="image">Upload Image:</label>
+                <input type="file" name="image" id="image" class="form-control mb-3" required onchange="previewImage(event)">
+              </div>
+              <button type="submit" class="btn btn-primary">Predict</button>
+            </form>
+
+            <!-- Live Image Preview -->
+            <div id="preview-container" style="display: none;" class="mt-4">
+              <h5>Selected Image Preview:</h5>
+              <img id="preview" src="#" alt="Image Preview" class="img-fluid rounded shadow" style="max-width: 400px;">
+            </div>
+          </div>
+
+          <!-- After Prediction -->
+          {% if predicted_class %}
+          <div class="mt-5 body-text">
+            <h4>Prediction Result:</h4>
+
+            <!-- Show Uploaded Image -->
+            {% if image_path %}
+            <div class="mb-4">
+              <h5>Uploaded Image:</h5>
+              <img src="{{ url_for('static', filename=image_path) }}" class="img-fluid rounded shadow" style="max-width: 400px;" alt="Input X-ray">
+            </div>
+            {% endif %}
+
+            <p><strong>Predicted Class:</strong> {{ predicted_class }}</p>
+            <p><strong>Confidence Score:</strong> {{ confidence_score }}%</p>
+
+            <h5 class="mt-4">Condition Checklist:</h5>
+            <ul style="list-style: none;">
+              <li>
+                <input type="checkbox" disabled {% if predicted_class == 'COVID-19' %}checked{% endif %}>
+                <label>COVID-19</label>
+              </li>
+              <li>
+                <input type="checkbox" disabled {% if predicted_class == 'PNEUMONIA' %}checked{% endif %}>
+                <label>Pneumonia</label>
+              </li>
+              <li>
+                <input type="checkbox" disabled {% if predicted_class == 'NORMAL' %}checked{% endif %}>
+                <label>Normal</label>
+              </li>
+            </ul>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Live Image Preview Script -->
+<script>
+function previewImage(event) {
+  const input = event.target;
+  const previewContainer = document.getElementById('preview-container');
+  const preview = document.getElementById('preview');
+
+  preview.src = "";
+  previewContainer.style.display = "none";
+
+  if (input.files && input.files[0]) {
+    const file = input.files[0];
+
+    if (!file.type.startsWith('image/')) {
+      alert("Please upload a valid image file.");
+      input.value = ''; // clear input
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = function (e) {
+      preview.src = e.target.result;
+      previewContainer.style.display = 'block';
+    };
+    reader.onerror = function () {
+      alert("Failed to read image.");
+    };
+    reader.readAsDataURL(file);
+  }
+}
+</script>
+
+{% endblock %}

@@ -1,0 +1,99 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+
+<!-- Breadcrumbs -->
+<div class="breadcrumbs overlay">
+	<div class="container">
+		<div class="bread-inner">
+			<div class="row">
+				<div class="col-12">
+					<h2>Generate Lung X-ray Images</h2>
+					<ul class="bread-list">
+						<li><a href="{{ url_for('index') }}">Home</a></li>
+						<li><i class="icofont-simple-right"></i></li>
+						<li class="active">Synthetic Image Generator</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Generate Images Section -->
+<section class="pf-details section">
+	<div class="container" style="padding-left: 300px; padding-right: 200px;">
+		<div class="row" style="text-align: center; align-items: center;">
+			<div class="col-12">
+				<div class="inner-content">
+					<div class="body-text">
+						<h3>Upload Chest X-ray & Generate Synthetic Samples</h3>
+
+						<form action="{{ url_for('generate_images') }}" method="POST" enctype="multipart/form-data">
+							<div class="form-group">
+								<label for="input_image">Upload Image:</label>
+								<input type="file" name="input_image" id="input_image" class="form-control mb-3" required onchange="previewImage(event)">
+							</div>
+							<div class="form-group">
+								<label for="num_images">Number of Images to Generate:</label>
+								<input type="number" name="num_images" id="num_images" class="form-control w-25 mb-4" min="1" max="100" value="3" required>
+							</div>
+							<button type="submit" class="btn btn-primary">Generate</button>
+						</form>
+
+						<!-- Live Preview Section -->
+						<div id="preview-container" style="display: none;" class="mt-4">
+							<h5>Selected Image Preview:</h5>
+							<img id="preview" src="#" alt="Image Preview" class="img-fluid rounded shadow" style="max-width: 400px;">
+						</div>
+					</div>
+
+					<!-- Show Uploaded Image (from backend after POST) -->
+					{% if uploaded_image %}
+					<div class="mt-5">
+						<h4>Uploaded Image:</h4>
+						<img src="{{ url_for('static', filename=uploaded_image) }}" alt="Input X-ray" class="img-fluid rounded shadow" style="max-width: 400px;">
+					</div>
+					{% endif %}
+
+					<!-- Show Generated Images -->
+					{% if generated_images %}
+					<div class="mt-5">
+						<h4>Generated Images:</h4>
+						<div class="row">
+							{% for img_path in generated_images %}
+							<div class="col-md-4 col-sm-6 mb-4">
+								<div class="single-pf">
+									<img src="{{ url_for('static', filename=img_path) }}" alt="Generated X-ray" class="img-fluid rounded">
+								</div>
+							</div>
+							{% endfor %}
+						</div>
+					</div>
+					{% endif %}
+
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- Live Image Preview Script -->
+<script>
+function previewImage(event) {
+	const input = event.target;
+	const previewContainer = document.getElementById('preview-container');
+	const preview = document.getElementById('preview');
+
+	if (input.files && input.files[0]) {
+		const reader = new FileReader();
+		reader.onload = function (e) {
+			preview.src = e.target.result;
+			previewContainer.style.display = 'block';
+		};
+		reader.readAsDataURL(input.files[0]);
+	}
+}
+</script>
+
+{% endblock %}
