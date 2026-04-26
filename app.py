@@ -22,7 +22,7 @@ def generate_images():
         input_file = request.files.get('input_image')
         num_images = int(request.form.get('num_images', 1))
 
-        if not input_file:
+        if not input_file or input_file.filename == '':
             return render_template('generate_images.html', error="No file uploaded")
 
         filename = secure_filename(input_file.filename)
@@ -43,7 +43,7 @@ def generate_images():
 def prediction():
     if request.method == 'POST':
         file = request.files['image']
-        if not file:
+        if not file or file.filename == '':
             return render_template('prediction.html', error="Please upload an image.")
 
         filename = secure_filename(file.filename)
