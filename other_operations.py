@@ -72,7 +72,7 @@ def load_model():
         model = AutoModelForImageClassification.from_pretrained(
             model_name, 
             low_cpu_mem_usage=True, 
-            torch_dtype=torch.bfloat16
+            dtype=torch.bfloat16
         )
         gc.collect()
         print("ViT model loaded successfully!")
